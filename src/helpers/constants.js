@@ -41,6 +41,7 @@ export const DEFAULT_OPTIONS = {
   },
   parsePages: true,
   pages: {},
+  singleFileTranslation: false,
   beforeLanguageSwitch: () => null,
   onLanguageSwitched: () => null
 }

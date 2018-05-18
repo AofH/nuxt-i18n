@@ -50,6 +50,17 @@ export default function (userOptions) {
     syncVuex
   }
 
+  if (options.singleFileTranslation) {
+    this.extendBuild((config, {isClient, isServer}) => {
+      config.module.rules.push({
+        test: /\.i18n$/,
+        loader: `@kazupon/vue-i18n-loader?${JSON.stringify({
+          includePaths: [resolve(__dirname), 'node_modules']
+        })}`
+      })
+    })
+  }
+
   // Generate localized routes
   this.extendRoutes((routes) => {
     const localizedRoutes = makeRoutes(routes, {
